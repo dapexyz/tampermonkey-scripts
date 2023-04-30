@@ -12,7 +12,7 @@
 (function() {
     'use strict';
 
-    window.addEventListener('contextmenu', function contextmenu(event) {
+    window.addEventListener('contextmenu', (event) => {
         if(window.location.href.includes("input") || event.target.tagName == "CODE") {
             event.target.style.color = "green";
             navigator.clipboard.writeText( event.target.textContent);
@@ -22,5 +22,11 @@
 
             event.preventDefault();
         }
-    }, true);
+    });
+
+    window.addEventListener("paste", (event) => {
+        document.querySelector("input[type='text']").value = event.clipboardData.getData("text/plain").trim();
+        document.querySelector("input[type='submit']").click();
+    });
+
 })();
