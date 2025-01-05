@@ -25,6 +25,7 @@
     });
 
     window.addEventListener("paste", (event) => {
+	event.preventDefault();
         document.querySelector("input[type='text']").value = event.clipboardData.getData("text/plain").trim();
         document.querySelector("input[type='submit']").click();
     });
